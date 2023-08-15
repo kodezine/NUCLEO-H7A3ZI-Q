@@ -24,16 +24,18 @@ if(NOT cmake-toolchains_POPULATED)
     FetchContent_Populate(cmake-toolchains)
 endif()
 
-
-project(hal
+project(
+    NUCLEO-H7A3ZI-Q
     VERSION     0.0.1
     LANGUAGES   C ASM CXX
-    DESCRIPTION "Hardware Abstraction Layer for STM32CubeMx based project"
+    DESCRIPTION "Hardware Abstraction Layer for STM32CubeXX based project"
 )
 set(STM32_TYPE "h7")
 set(STM32_DEVICE "STM32H7A3xxQ")
 include(${cmake-toolchains_SOURCE_DIR}/silicon/st/STM32Cube.cmake)
-#include(cmake/lib_hal.cmake)
+
+configure_file(${CMAKE_SOURCE_DIR}/cmake/libcore-hal.txt ${CMAKE_SOURCE_DIR}/cubemx/CMakeLists.txt COPYONLY)
+add_subdirectory(cubemx)
 if(DEMO)
 #    add_subdirectory(demo)
 endif()

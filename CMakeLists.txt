@@ -1,8 +1,8 @@
 # Minimum version for cmake compatiblity
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.22)
 include(CMakePrintHelpers)
 include(FetchContent)
-set(CORTEX_TYPE "cm0")
+
 # Set branch names for the sub modules dependencies
 set(GITHUB_BRANCH_TOOLCHAIN "HEAD" CACHE STRING "git SHA for CMake Toolchain")
 # set the location of all fetched repos
@@ -30,9 +30,10 @@ project(hal
     LANGUAGES   C ASM CXX
     DESCRIPTION "Hardware Abstraction Layer for STM32CubeMx based project"
 )
-
-include(cmake/lib_hal.cmake)
+set(STM32_TYPE "h7")
+set(STM32_DEVICE "STM32H7A3xxQ")
+include(${cmake-toolchains_SOURCE_DIR}/silicon/st/STM32Cube.cmake)
+#include(cmake/lib_hal.cmake)
 if(DEMO)
-    add_subdirectory(demo)
+#    add_subdirectory(demo)
 endif()
-

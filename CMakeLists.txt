@@ -32,10 +32,11 @@ project(
 )
 set(STM32_TYPE "h7")
 set(STM32_DEVICE "STM32H7A3xxQ")
+set(STM32_HAL_CONFIGURATION "${CMAKE_CURRENT_SOURCE_DIR}/cubemx/Core/Inc/stm32h7xx_hal_conf.h" CACHE STRING "File for configuring the STM32Cube.cmake below" FORCE)
 include(${cmake-toolchains_SOURCE_DIR}/silicon/st/STM32Cube.cmake)
 
-configure_file(${CMAKE_SOURCE_DIR}/cmake/libcore-hal.txt ${CMAKE_SOURCE_DIR}/cubemx/CMakeLists.txt COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/libcore-hal.txt ${CMAKE_CURRENT_SOURCE_DIR}/cubemx/CMakeLists.txt COPYONLY)
 add_subdirectory(cubemx)
 if(DEMO)
-#    add_subdirectory(demo)
+    add_subdirectory(__demo)
 endif()

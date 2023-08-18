@@ -56,7 +56,10 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+__weak void app_main(void)
+{
+  __ASM("nop");
+}
 /* USER CODE END 0 */
 
 /**
@@ -90,7 +93,8 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_HS_USB_Init();
   /* USER CODE BEGIN 2 */
-  HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+  HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+  app_main();
   /* USER CODE END 2 */
 
   /* Infinite loop */

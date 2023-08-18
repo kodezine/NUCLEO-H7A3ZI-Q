@@ -8,6 +8,7 @@ The following options are used while configuration of STM32CubeMX IOC project:
 * use the [STM32CubeH7](https://github.com/STMicroelectronics/STM32CubeH7) firmware repository on GitHub as the low level drivers
 * enforce the cubemx [generated hal configuration file](/cubemx/Core/Inc/stm32h7xx_hal_conf.h) to guide the low level compilation
 > :warning: **LLVM Fails to find `NULL`**
+>
 > The auto generated file [sysmem.c](./cubemx/Core/Src/sysmem.c) uses `NULL` in the source without including `string.h` header file. This has to be re-introduced each time for a successful build.
 
 ## CMake definitions

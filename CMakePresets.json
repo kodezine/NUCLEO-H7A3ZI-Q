@@ -7,8 +7,8 @@
     },
     "configurePresets": [
     {
-        "name": "Blinky_llvm_Demo",
-        "displayName": "Blinky_llvm_Demo",
+        "name": "llvm-demo",
+        "displayName": "llvm-demo",
         "description": "Blinky board demo with llvm clang",
         "generator": "Ninja",
         "environment": {
@@ -28,8 +28,8 @@
     ],
     "buildPresets": [
     {
-        "name": "Blinky_llvm_Demo",
-        "configurePreset": "Blinky_llvm_Demo"
+        "name": "llvm-demo",
+        "configurePreset": "llvm-demo"
     }
     ]
 }

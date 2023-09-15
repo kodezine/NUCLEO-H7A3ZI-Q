@@ -19,12 +19,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usart.h"
-#include "usb_otg.h"
+#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdbool.h>
+#include "usbd_cdc_if.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,7 +60,13 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 __weak void app_main(void)
 {
-  __ASM("nop");
+	uint8_t buffer[] = "Hello, World\r\n";
+	do
+	{
+		CDC_Transmit_HS(buffer, sizeof(buffer));
+		HAL_Delay(1000);
+	}while(true);
+
 }
 /* USER CODE END 0 */
 
@@ -91,7 +99,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
-  MX_USB_OTG_HS_USB_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
   app_main();
